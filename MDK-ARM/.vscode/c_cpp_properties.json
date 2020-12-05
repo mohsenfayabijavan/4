@@ -1,0 +1,27 @@
+{
+    "configurations": [
+        {
+            "name": "keil",
+            "includePath": [
+                "d:\\1project\\dimer\\3\\MDK-ARM\\..\\Inc",
+                "d:\\1project\\dimer\\3\\MDK-ARM\\       ..\\Drivers\\STM32F0xx_HAL_Driver\\Inc",
+                "d:\\1project\\dimer\\3\\MDK-ARM\\       ..\\Drivers\\STM32F0xx_HAL_Driver\\Inc\\Legacy",
+                "d:\\1project\\dimer\\3\\MDK-ARM\\       ..\\Drivers\\CMSIS\\Device\\ST\\STM32F0xx\\Include",
+                "d:\\1project\\dimer\\3\\MDK-ARM\\       ..\\Drivers\\CMSIS\\Include",
+                "d:\\1project\\dimer\\3\\MDK-ARM\\       ..\\Inc",
+                "d:\\1project\\dimer\\3\\MDK-ARM\\       ..\\Inc\\LCD",
+                "d:\\1project\\dimer\\3\\MDK-ARM\\       ..\\Inc\\rtc",
+                "d:\\1project\\dimer\\3\\MDK-ARM\\       ..\\Inc\\EEPROM",
+                "d:\\1project\\dimer\\3\\MDK-ARM",
+                "d:\\1project\\dimer\\3\\MDK-ARM\\..\\Src",
+                "d:\\1project\\dimer\\3\\MDK-ARM\\..\\Drivers\\STM32F0xx_HAL_Driver\\Src"
+            ],
+            "defines": [
+                "USE_HAL_DRIVER",
+                "STM32F030x6"
+            ],
+            "intelliSenseMode": "${default}"
+        }
+    ],
+    "version": 4
+}

@@ -222,7 +222,7 @@ int main(void)
 // ee.write_char(x,ee._on_tim_hor);
 
 
- ee_read_varabel();
+ //ee_read_varabel();
  //if((char)var.longitude > 180) var.longitude=28.123456;
  //if((char)var.latitudes > 90) var.latitudes=57.123456; 
  

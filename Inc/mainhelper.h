@@ -173,7 +173,8 @@ char MAINHELPER::menu (unsigned char locate=0)
 			 {
 				 lcd.Clear();
          lcd.show("   Longitude",0,0);
-				 sprintf(buf,"%u.%u",((char)var.longitude),(var.longitude*100)-(((char)var.longitude)*100)   );
+				 sprintf(buf,"%u.%u",((char)var.longitude),(char)((var.longitude*100)-(((char)var.longitude)*100))   );
+
 				 lcd.show(buf,1,0);
 			 
 			 }	
@@ -182,7 +183,7 @@ char MAINHELPER::menu (unsigned char locate=0)
 			 {
 				 lcd.Clear();
          lcd.show("   Latitudes",0,0);
-				 sprintf(buf,"%u.%u",((char)var.latitudes),((var.latitudes*100)-(((char)var.latitudes)*100)));
+				 sprintf(buf,"%u.%u",((char)var.latitudes),(char)((var.latitudes*100)-(((char)var.latitudes)*100)));
 				 lcd.show(buf,1,0);
 			 }	
 			 //--------------------------------------------------------

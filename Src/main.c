@@ -232,7 +232,7 @@ int main(void)
 	 
  char buf[25];
 //double ffddf=sin(180.1);
-	mh.menu(4);
+	
   while (1)
   {
 		if(oneSecond)

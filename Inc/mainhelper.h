@@ -173,7 +173,8 @@ char MAINHELPER::menu (unsigned char locate=0)
 			 {
 				 lcd.Clear();
          lcd.show("   Longitude",0,0);
-         sprintf(buf,"%f",var.longitude);lcd.show(buf,1,0);
+				 sprintf(buf,"%u.%u",((char)var.longitude),(var.longitude*100)-(((char)var.longitude)*100)   );
+				 lcd.show(buf,1,0);
 			 
 			 }	
 			 //--------------------------------------------------------
@@ -181,7 +182,8 @@ char MAINHELPER::menu (unsigned char locate=0)
 			 {
 				 lcd.Clear();
          lcd.show("   Latitudes",0,0);
-         sprintf(buf,"%f",var.latitudes);lcd.show(buf,1,0);
+				 sprintf(buf,"%u.%u",((char)var.latitudes),((var.latitudes*100)-(((char)var.latitudes)*100)));
+				 lcd.show(buf,1,0);
 			 }	
 			 //--------------------------------------------------------
 			 else if(locate == 6 && cont==1)
@@ -195,7 +197,6 @@ char MAINHELPER::menu (unsigned char locate=0)
 			 {
 				 lcd.Clear();
          lcd.show("   Exit",0,0);
-         //lcd.show(57,1,0);lcd.show(".");lcd.show(123456);
 			 }	
 			 //--------------------------------------------------------
        else if(key.read() == key.set)
@@ -229,6 +230,7 @@ void MAINHELPER::change_on_time(void)
 	bool OnTimePosNeg=var.OnTimePosNeg;
   char OnTimeHour=var.OnTimeHour;
 	char OnTimeMin =var.OnTimeMin;
+	
 	
 	
 	//ontime_mode=1;
@@ -536,54 +538,26 @@ void MAINHELPER::change_lite_long(void)
 //-----------------------------------------------------
 void MAINHELPER::change_Longitude (void)
 {
-  long xs   =((var.longitude*1000000)-(((char)var.longitude)*1000000));
-	                               // 28.691217
+ // long xs   =
+	                               // 28.69
 	char x1  =(char)var.longitude; // 28       
-  char x2  =xs/100000  ;         // 6
-//  char x3  =xs/10000%10;         // 9
-//	char x4  =xs/1000 %10;         // 1
-//	char x5  =xs/100  %10;         // 2
-//	char x6  =xs/10   %10;         // 1
-//	char x7  =xs      %10;         // 7
+  char x2  =((var.longitude*100)-(((char)var.longitude)*100));    
 
 
 	
-	sprintf(buf,"%%u.%u%u%u%u%u%u",x2);//,x3,x4,x5,x6,x7);
+	sprintf(buf,"%%u.%u",x2);
 	x1=change_number("Longitude",buf,x1,0,99);
 	if( x1 == CancelNumber)return;
 	
-	sprintf(buf,"%u.%%u%u%u%u%u%u",x1);//;,x3,x4,x5,x6,x7);
-	x2=change_number("Longitude",buf,x2,0,9);
+	sprintf(buf,"%u.%%u",x1);
+	x2=change_number("Longitude",buf,x2,0,99);
 	if( x2 == CancelNumber)return;
 	
-//	sprintf(buf,"%u.%u%%u%u%u%u%u",x1,x2,x4,x5,x6,x7);
-//	x3=change_number("Longitude",buf,x3,0,9);
-//	if( x3 == CancelNumber)return;
-//	
-//	sprintf(buf,"%u.%u%u%%u%u%u%u",x1,x2,x3,x5,x6,x7);
-//	x4=change_number("Longitude",buf,x4,0,9);
-//	if( x4 == CancelNumber)return;
-//	
-//	sprintf(buf,"%u.%u%u%u%%u%u%u",x1,x2,x3,x4,x6,x7);
-//	x5=change_number("Longitude",buf,x5,0,9); 
-//	if( x5 == CancelNumber)return;
-//	
-//	sprintf(buf,"%u.%u%u%u%u%%u%u",x1,x2,x3,x4,x5,x7);
-//	x6=change_number("Longitude",buf,x6,0,9);
-//	if( x6 == CancelNumber)return;
-//	
-//	sprintf(buf,"%u.%u%u%u%u%u%%u",x1,x2,x3,x4,x5,x6);
-//	x7=change_number("Longitude",buf,x7,0,9);
-//	if( x7 == CancelNumber)return;
 	
 
-	var.longitude = x1 + 
-		       (float)x2/10 ;//+
-//		       (float)x3/100+
-//		       (float)x4/1000+
-//		       (float)x5/10000+
-//		       (float)x6/100000+
-//		       (float)x7/1000000;
+	var.longitude = x1 + (float)x2/100;
+	
+	
 	var.update_eeprom();    
 }
 //-----------------------------------------------------
@@ -592,10 +566,10 @@ void MAINHELPER::change_Longitude (void)
 void MAINHELPER::change_Latitudes(void)
 {
 	
-  long xs   =((var.latitudes*1000000)-(((char)var.latitudes)*1000000));
+  long xs   =((var.latitudes*100)-(((char)var.latitudes)*100));
 	                               // 28.691217
 	char x1  =(char)var.latitudes; // 28       
-  char x2  =xs/100000  ;         // 6
+  char x2  =xs  ;         // 6
 //  char x3  =xs/10000%10;         // 9
 //	char x4  =xs/1000 %10;         // 1
 //	char x5  =xs/100  %10;         // 2
@@ -604,12 +578,12 @@ void MAINHELPER::change_Latitudes(void)
 	
 
 
-	sprintf(buf,"%%u.%u%u%u%u%u%u",x2);//,x3,x4,x5,x6,x7);
+	sprintf(buf,"%%u.%u",x2);//,x3,x4,x5,x6,x7);
 	x1=change_number("latitudes",buf,x1,0,99);
 	if( x1 == CancelNumber)return;
 	
-	sprintf(buf,"%u.%%u%u%u%u%u%u",x1);//,x3,x4,x5,x6,x7);
-	x2=change_number("latitudes",buf,x2,0,9);
+	sprintf(buf,"%u.%%u",x1);//,x3,x4,x5,x6,x7);
+	x2=change_number("latitudes",buf,x2,0,99);
 	if( x2 == CancelNumber)return;
 	
 //	sprintf(buf,"%u.%u%%u%u%u%u%u",x1,x2,x4,x5,x6,x7);
@@ -634,12 +608,8 @@ void MAINHELPER::change_Latitudes(void)
 
 	
 	var.latitudes = x1 + 
-		       (float)x2/10;// +
-//		       (float)x3/100+
-//		       (float)x4/1000+
-//		       (float)x5/10000+
-//		       (float)x6/100000+
-//		       (float)x7/1000000;
+		       (float)x2/100;
+
 	var.update_eeprom();  
 }
 //-----------------------------------------------------
@@ -757,10 +727,10 @@ unsigned long MAINHELPER::lite_calc(void)
 //-----------------------------------------------------
 void MAINHELPER::cal_on_off_time(void)
 {
-	char SunSet_hour =cal.ss.sun_set_hor;
-	char SunSet_min  =cal.ss.sun_set_min;	
-	char SunRise_hour=cal.ss.sun_rise_hor;
-  char SunRise_min =cal.ss.sun_rise_min;
+	char SunSet_hour =pt.tim.sunset_hor;
+	char SunSet_min  =pt.tim.sunset_min;	
+	char SunRise_hour=pt.tim.sunrise_hor;
+  char SunRise_min =pt.tim.sunrise_min;
 	
 	
 	now_time.hour=rtc.hour;
@@ -963,7 +933,7 @@ void MAINHELPER::hide_menu (unsigned char locate=0)
 //-----------------------------------------------------
 void VARABEL::ee_set_Longitude(float longitude) // 0 to 180 degress
 {                                               //28.691217
-	long x=longitude*1000000;
+	long x=longitude*100;
 	ee.write_long(x,ee._longitude);
 }
 //-----------------------------------------------------
@@ -971,7 +941,7 @@ void VARABEL::ee_set_Longitude(float longitude) // 0 to 180 degress
 //-----------------------------------------------------
 void VARABEL::ee_set_Latitudes(float latitudes)        //0 to 90 degress
 {                                                      //57.753336 
-  long x=latitudes*1000000;
+  long x=latitudes*100;
 	ee.write_long(x,ee._latitudes);	
 }
 //-----------------------------------------------------
@@ -982,7 +952,7 @@ void VARABEL::ee_read_Longitude(void) // 0 to 180 degress
  // char buf[32];	
   long x=0;        
 	ee.read_long(&x,ee._longitude);
-	longitude=(float)x/1000000;
+	longitude=(float)x/100;
 	
 	//sprintf(buf,"%u",x);lcd.show(buf,0,0);
 	//sprintf(buf,"%f",longitude);lcd.show(buf,1,0);
@@ -995,7 +965,7 @@ void VARABEL::ee_read_Latitudes(void) //0 to 90 degress
 {
 	long x=0;        
 	ee.read_long(&x,ee._latitudes);
-	latitudes=(float)x/1000000;
+	latitudes=(float)x/100;
 }
 //-----------------------------------------------------
 //-----------------------------------------------------

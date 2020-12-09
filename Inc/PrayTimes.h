@@ -485,27 +485,27 @@ void PrayTime::computeTimes ( void )
  
 	
 
-  double Fajr    = computeTime(180- methodParams[calcMethod][0], t[0]);
+  //double Fajr    = computeTime(180- methodParams[calcMethod][0], t[0]);
   double Sunrise = computeTime(180 - 0.833, t[1]);
 	double Dhuhr   = computeMidDay(t[2]);
 	
 	
-  double Asr     = computeAsr(1+ asrJuristic, t[3]);
+ // double Asr     = computeAsr(1+ asrJuristic, t[3]);
 
 	double Sunset  = computeTime(0.833, t[4]);;
 
 
-	double Maghrib = computeTime(methodParams[calcMethod][2], t[5]);
-	double Isha    = computeTime(methodParams[calcMethod][4], t[6]);
+//	double Maghrib = computeTime(methodParams[calcMethod][2], t[5]);
+//	double Isha    = computeTime(methodParams[calcMethod][4], t[6]);
 
 //	return new double [] {Fajr, Sunrise, Dhuhr, Asr, Sunset, Maghrib, Isha};
-	times[0] = Fajr;
+//	times[0] = Fajr;
 	times[1] = Sunrise;
 	times[2] = Dhuhr;
-	times[3] = Asr;
+//	times[3] = Asr;
 	times[4] = Sunset;
-	times[5] = Maghrib;
-	times[6] = Isha;
+//	times[5] = Maghrib;
+//	times[6] = Isha;
 	 
 	 
 	
@@ -610,16 +610,16 @@ void  PrayTime::adjustTimes  ( void)
 //		while(1);
 
   	times[2] += dhuhrMinutes/ 60; //Dhuhr
-  	if (methodParams[calcMethod][1] == 1) // Maghrib
-		times[5] = times[4]+ methodParams[calcMethod][2]/ 60.0;
-		
-	if (methodParams[calcMethod][3] == 1) // Isha
-		times[6] = times[5]+ methodParams[calcMethod][4]/ 60.0;
+//  	if (methodParams[calcMethod][1] == 1) // Maghrib
+//		times[5] = times[4]+ methodParams[calcMethod][2]/ 60.0;
+//		
+//	if (methodParams[calcMethod][3] == 1) // Isha
+//		times[6] = times[5]+ methodParams[calcMethod][4]/ 60.0;
 
-    if ( adjustHighLats != None )
-    {
-        adjustHighLatTimes();//times = adjustHighLatTimes ();
-    }
+//    if ( adjustHighLats != None )
+//    {
+//        adjustHighLatTimes();//times = adjustHighLatTimes ();
+//    }
 
 //	return times;
 }
@@ -650,9 +650,9 @@ void PrayTime::adjustTimesFormat (void)
 //	return formatted;
 	char hor,min;
 	
-	floatToTime24(times[0] , &hor , &min);
-  tim.fajr_hor=hor;
-  tim.fajr_min=min;
+//	floatToTime24(times[0] , &hor , &min);
+//  tim.fajr_hor=hor;
+//  tim.fajr_min=min;
 
 	floatToTime24(times[1] , &hor , &min);
   tim.sunrise_hor=hor;
@@ -662,21 +662,21 @@ void PrayTime::adjustTimesFormat (void)
   tim.dhihr_hor=hor;
   tim.dhuhr_min=min;
 	
-	floatToTime24(times[3] , &hor , &min);
-  tim.asr_hor=hor;
-  tim.asr_min=min;
+//	floatToTime24(times[3] , &hor , &min);
+//  tim.asr_hor=hor;
+//  tim.asr_min=min;
 	
 	floatToTime24(times[4] , &hor , &min);
   tim.sunset_hor=hor;
   tim.sunset_min=min;
 	
-	floatToTime24(times[5] , &hor , &min);
-  tim.maghrib_hor=hor;
-  tim.maghrib_min=min;
-	
-	floatToTime24(times[6] , &hor , &min);
-  tim.isha_hor=hor;
-  tim.isha_min=min;
+//	floatToTime24(times[5] , &hor , &min);
+//  tim.maghrib_hor=hor;
+//  tim.maghrib_min=min;
+//	
+//	floatToTime24(times[6] , &hor , &min);
+//  tim.isha_hor=hor;
+//  tim.isha_min=min;
 	 
 //	floatToTime24(times[0] , &hor , &min);
 //  tim.sunset_hor=hor;

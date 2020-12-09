@@ -63,6 +63,7 @@ unsigned long lite=10000;
 	 float longitude;
 	 float latitudes;
 	 
+	 
 	 long max_lite,min_lite;
 	 char max_lite_persent,min_lite_persent;
 	
@@ -222,7 +223,7 @@ int main(void)
 // ee.write_char(x,ee._on_tim_hor);
 
 
- //ee_read_varabel();
+ ee_read_varabel();
  //if((char)var.longitude > 180) var.longitude=28.123456;
  //if((char)var.latitudes > 90) var.latitudes=57.123456; 
  
@@ -231,6 +232,7 @@ int main(void)
 	 
  char buf[25];
 //double ffddf=sin(180.1);
+	mh.menu(4);
   while (1)
   {
 		if(oneSecond)
@@ -250,14 +252,14 @@ int main(void)
 			                                                   rtc.sec);
              lcd.show(buf,0,0);
 //			cal.cal_sunset_sunrise(57.753336,28.691217);
-	//		pt.getDatePrayerTimes(rtc.year+2000,rtc.mont,rtc.day_of_mont,28.68,57.75,3.5);
+			pt.getDatePrayerTimes(rtc.year+2000,rtc.mont,rtc.day_of_mont,28.68,57.75,3.5);
 			
 			if(key.newkey == 1)
 			{
 				char press = key.check_key();
 				if( press == key.set)
 				{
-					mh.menu(2);
+					mh.menu(0);
 					
 					
 				}
@@ -267,6 +269,7 @@ int main(void)
 //			mh.cal_on_off_time();  // macke on and off time
 //			lite=mh.lite_calc();  // lite calclude  return 10.000 to 90.000
 			
+			 
 			long lite_=100-((lite-10000)/(80000/100));
 			
 			sprintf(buf,"%u:%u %u:%u %u " ,on_time.hour,on_time.min,off_time.hour,off_time.min,  lite_);

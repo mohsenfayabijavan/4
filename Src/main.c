@@ -243,13 +243,14 @@ int main(void)
 		  HAL_GPIO_TogglePin(LED_GPIO_Port,LED_Pin);
 			
 			cal.milady_to_shamsy(rtc.year,rtc.mont,rtc.day_of_mont);
-			sprintf(buf,"%u/%u/%u %u:%u:%u ",
-				(cal.sh.year < 1400)?  (cal.sh.year-1390):(cal.sh.year-1400)     ,
+			sprintf(buf,"%u/%u/%u %u%c%u ",
+				(cal.sh.year < 1400)?  (cal.sh.year-1300):(cal.sh.year-1400)     ,
 			                                                   cal.sh.month,
 			                                                   cal.sh.day_of_mont ,
 			                                                   rtc.hour,
-			                                                   rtc.min,
-			                                                   rtc.sec);
+			                                                   (rtc.sec%2)? ':':'*',
+			                                                   rtc.min);
+			
              lcd.show(buf,0,0);
 //			cal.cal_sunset_sunrise(57.753336,28.691217);
 			pt.getDatePrayerTimes(rtc.year+2000,rtc.mont,rtc.day_of_mont,28.68,57.75,3.5);

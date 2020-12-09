@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Program\Program.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Program\Program.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Wed Dec 09 22:53:42 2020
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Wed Dec 09 23:07:39 2020
 <BR><P>
 <H3>Maximum Stack Usage =        808 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -2067,7 +2067,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DATE_CALC::hshisleap(int)
 </UL>
 
-<P><STRONG><a name="[1a]"></a>main</STRONG> (Thumb, 348 bytes, Stack size 56 bytes, main.o(i.main))
+<P><STRONG><a name="[1a]"></a>main</STRONG> (Thumb, 366 bytes, Stack size 56 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 808<LI>Call Chain = main &rArr; PrayTime::getDatePrayerTimes(int, int, int, double, double, double) &rArr; PrayTime::computeDayTimes() &rArr; PrayTime::computeTimes() &rArr; PrayTime::computeTime(double, double) &rArr; PrayTime::computeMidDay(double) &rArr; PrayTime::equationOfTime(double) &rArr; PrayTime::sunPosition(double, char) &rArr; PrayTime::dsin(double) &rArr; sin &rArr; __ieee754_rem_pio2 &rArr; __aeabi_dmul &rArr; _double_epilogue &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Start_IT
